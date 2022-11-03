@@ -19,7 +19,6 @@ def divide (x,y):
         result=x/y
     except ZeroDivisionError:
         print("You can't divide it by zero")
-        exit();
     else:
         return result
    
@@ -58,6 +57,8 @@ while True:
         # check if user wants another calculation
         # break the while loop if answer is no
         next_calculation = input("Let's do next calculation? (yes/no): ")
+        next_calculation=next_calculation.lower();
+        print(next_calculation)
         if next_calculation == "no":
             break
 
