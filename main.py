@@ -60,7 +60,11 @@ while True:
         # break the while loop if answer is no
         next_calculation = input("Let's do next calculation? (yes/no): ").lower();
         if next_calculation == "no":
-            break
+            answer=input("Are you sure? (yes/no): ").lower();
+            if answer == "yes":
+                break;
+            if answer=="no":
+                continue;
 
     else:
         print("Invalid Input")
