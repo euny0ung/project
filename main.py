@@ -17,10 +17,10 @@ def multiply(x, y):
 def divide (x,y):
     try:
         result=x/y
+        return result
     except ZeroDivisionError:
         print("You can't divide it by zero")
-    else:
-        return result
+        return None
    
 
 print("Calculator started.")
@@ -51,14 +51,14 @@ while True:
             print(num1, "*", num2, "=", multiply(num1, num2))
             
         elif choice =='4':
-            print(num1, "/", num2, "=", divide(num1,num2))
+            res=divide(num1, num2)
+            if res is not None:
+                print(num1, "/", num2, "=", res)
             
 
         # check if user wants another calculation
         # break the while loop if answer is no
-        next_calculation = input("Let's do next calculation? (yes/no): ")
-        next_calculation=next_calculation.lower();
-        print(next_calculation)
+        next_calculation = input("Let's do next calculation? (yes/no): ").lower();
         if next_calculation == "no":
             break
 
