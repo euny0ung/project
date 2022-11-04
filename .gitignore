@@ -182,4 +182,8 @@ cython_debug/
 .history
 .ionide
 
+# log file
+log.txt
+errorLog.txt
+
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,python
