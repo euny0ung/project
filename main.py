@@ -22,74 +22,82 @@ while True:
     # take input from the user
     choice = input("Enter choice(1/2/3/4): ")
     
-    abnormal=False;
+    abnormal=False
+    retry=True
 
     # check if choice is one of the four options
     if choice in ('1', '2', '3', '4'):
         
-        try:
-            num1 = float(input("Enter first number: "))
-            num2 = float(input("Enter second number: "))
-        except:
-            print("You can only enter numbers")
-            continue ###try 부분으로 다시 돌아갈 수 있게?
-        
+        while retry is True:
+            try:
+                firstNum = float(input("Enter first number: "))
+                secondNum = float(input("Enter second number: "))
+            except:
+                retry=True
+                num1=None
+                num2=None
+                print("You can only enter numbers")
+            else: 
+                retry=False
+                num1=firstNum
+                num2=secondNum
 
-        if choice == '1':
-            operator="+"
-            log=returnPrint(num1, operator, num2, "=", add(num1, num2))
-            print(log)
-
-        elif choice == '2':
-            operator="-"
-            log=returnPrint(num1, operator, num2, "=", subtract(num1, num2))
-            print(log)
-
-        elif choice == '3':
-            operator="*"
-            log=returnPrint(num1, operator, num2, "=", multiply(num1, num2))
-            print(log)
-            
-        elif choice =='4':
-            operator="/"
-            res=divide(num1, num2)
-            log=returnPrint(num1, operator, num2, "=", res)
-            if res is not None: 
+        if num1 is not None and num2 is not None:
+            if choice == '1':
+                operator="+"
+                log=returnPrint(num1, operator, num2, "=", add(num1, num2))
                 print(log)
-            else:
-                abnormal=True 
-                
-        if abnormal:
-            errorLog(log)
-        else:
-            Log(log)
 
-        # check if user wants another calculation
-        # break the while loop if answer is no
-        
-        repeat=True
-        
-        while repeat is True:
-            next_calculation = input("Let's do next calculation? (yes/no): ").lower();
+            elif choice == '2':
+                operator="-"
+                log=returnPrint(num1, operator, num2, "=", subtract(num1, num2))
+                print(log)
+
+            elif choice == '3':
+                operator="*"
+                log=returnPrint(num1, operator, num2, "=", multiply(num1, num2))
+                print(log)
+                
+            elif choice =='4':
+                operator="/"
+                res=divide(num1, num2)
+                log=returnPrint(num1, operator, num2, "=", res)
+                if res is not None: 
+                    print(log)
+                else:
+                    abnormal=True 
+                    
+            if abnormal:
+                errorLog(log)
+            else:
+                Log(log)
+
+            # check if user wants another calculation
+            # break the while loop if answer is no
             
-            if next_calculation == "no":
-                answer=input("Are you sure? (yes/no): ").lower();
-                if answer == "yes":
-                    repeat=False
-                    break; 
-                elif answer=="no":
+            repeat=True
+            
+            while repeat is True:
+                next_calculation = input("Let's do next calculation? (yes/no): ").lower();
+                
+                if next_calculation == "no":
+                    answer=input("Are you sure? (yes/no): ").lower();
+                    if answer == "yes":
+                        repeat=False
+                        break; 
+                    elif answer=="no":
+                        break;
+                    else:
+                        print("You can only choose yes or no") 
+                        repeat=True
+                elif next_calculation=="yes":
                     break;
                 else:
                     print("You can only choose yes or no") 
                     repeat=True
-            elif next_calculation=="yes":
+            
+            if repeat is False:
                 break;
-            else:
-                print("You can only choose yes or no") 
-                repeat=True
-        
-        if repeat is False:
-            break;
 
     else:
         print("Invalid Input")
