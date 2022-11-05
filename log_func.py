@@ -1,3 +1,5 @@
+# 로그 기록 함수
+
 def Log(newLog):
     f=open("./log.txt", "a")
     f.write(newLog)

@@ -1,3 +1,5 @@
+#연산 함수
+
 # This function adds two numbers
 def add(x, y):
     return x+y
@@ -11,7 +13,7 @@ def subtract(x, y):
 def multiply(x, y):
     return x*y
 
-#Need to define divide function.
+# This function divides two numbers
 def divide (x,y):
     try:
         return x/y
