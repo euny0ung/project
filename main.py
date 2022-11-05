@@ -1,38 +1,8 @@
 # Program make a simple calculator
 
 from io import StringIO
-
-# This function adds two numbers
-def add(x, y):
-    return x+y
-
-# This function subtracts two numbers
-def subtract(x, y):
-    return x-y
-
-
-# This function multiplies two numbers
-def multiply(x, y):
-    return x*y
-
-#Need to define divide function.
-def divide (x,y):
-    try:
-        result=x/y
-        return result
-    except ZeroDivisionError:
-        print("You can't divide it by zero")
-        return None
-
-def Log(newLog):
-    f=open("./log.txt", "a")
-    f.write(newLog)
-    f.close()
-    
-def errorLog(newLog):
-    f=open("./errorLog.txt", "a")
-    f.write(newLog)
-    f.close()
+from main_func import *
+from log_func import *
     
 def returnPrint(*message):
     io=StringIO()
